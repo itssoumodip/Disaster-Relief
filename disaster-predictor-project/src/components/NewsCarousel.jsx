@@ -47,14 +47,14 @@ const NewsCarousel = () => {
 
         <button 
           onClick={prevSlide}
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"
         >
           <ChevronLeft size={24} />
         </button>
         
         <button 
           onClick={nextSlide}
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 p-2 rounded-full text-white opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity"
         >
           <ChevronRight size={24} />
         </button>
