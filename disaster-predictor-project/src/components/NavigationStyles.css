@@ -1,0 +1,66 @@
+.nav {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.desktopMenu {
+  display: none;
+}
+
+.desktopMenuItem {
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.desktopMenuItem:hover {
+  color: #1f2937;
+}
+
+.hamburger {
+  color: #4b5563;
+  transition: color 0.2s;
+}
+
+.hamburger:hover {
+  color: #1f2937;
+}
+
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mobileMenuItem {
+  display: block;
+  padding: 8px 16px;
+  color: #4b5563;
+  transition: background-color 0.2s;
+}
+
+.mobileMenuItem:hover {
+  background-color: #f3f4f6;
+}

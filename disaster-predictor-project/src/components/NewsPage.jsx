@@ -85,8 +85,10 @@ function NewsPage() {
               {dropdownVisible && (
                 <div className="absolute mt-2 w-48 bg-white border rounded-md shadow-lg z-10">
                   <button onClick={() => handleCategoryChange('general')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">General</button>
-                  <button onClick={() => handleCategoryChange('weather')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Weather</button>
+                  <button onClick={() => handleCategoryChange('world')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">World</button>
                   <button onClick={() => handleCategoryChange('sports')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Sports</button>
+                  <button onClick={() => handleCategoryChange('nation')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Nation</button>
+                  <button onClick={() => handleCategoryChange('business')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Business</button>
                   <button onClick={() => handleCategoryChange('technology')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Technology</button>
                   <button onClick={() => handleCategoryChange('health')} className="block px-4 py-2 text-gray-800 hover:bg-gray-200">Health</button>
                 </div>
