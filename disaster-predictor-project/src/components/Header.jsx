@@ -19,7 +19,12 @@ function Header() {
         </nav>
       </div>
       <div className="flex items-center gap-4">
-        <button className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold">SIGN UP</button>
+        <button 
+          className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold"
+          onClick={() => navigate('/create-account')}
+        >
+          SIGN UP
+        </button>
         <button 
           className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold"
           onClick={() => navigate('/login')}

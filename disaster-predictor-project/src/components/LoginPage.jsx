@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { UserCircle, Lock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const LoginPage = () => {
           ></div>
           <div className="relative z-10">
             <h2 className="text-4xl font-bold mb-4">Welcome Back</h2>
-            <p className="text-blue-100 font-bold mb-6">Your source for news. Your path to relief.</p>
+            <p className="text-blue-100 mb-6">Your source for news. Your path to relief.</p>
           </div>
         </div>
 
@@ -60,7 +61,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 group shadow-md hover:shadow-lg"
+              className="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 group shadow-md hover:shadow-lg"
             >
               Login
               <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
@@ -70,9 +71,9 @@ const LoginPage = () => {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Don't have an account?{' '}
-              <a href="#" className="text-blue-600 hover:underline">
+              <Link to="/create-account" className="text-blue-600 hover:underline">
                 Create an Account
-              </a>
+              </Link>
             </p>
           </div>
         </div>
