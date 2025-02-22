@@ -29,6 +29,7 @@ body {
   background-size: cover;
   background-position: center;
   background-color: rgba(0, 0, 0, 0.858); 
+  background-image: url('./assets/homepagebg.jpg'); /* or any other image you prefer */
   z-index: -1;
 }
 

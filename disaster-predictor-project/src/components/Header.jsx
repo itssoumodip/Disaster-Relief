@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="bg-gray-600/20 p-1 flex justify-between items-center">
       <div className="flex items-center gap-4">
-        <img src="src/assets/ogLogo.png" alt="Impact Relief" className="h-20 w-20" />
+        <img src="src/assets/logo.png" alt="Impact Relief" className="h-20 w-20" />
         <nav className="hidden md:flex gap-6">
           <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/')}>HOME</a>
           <a href="#" className="text-white text-lg font-bold">ROAD & MAPS</a>
