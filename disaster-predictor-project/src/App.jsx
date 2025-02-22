@@ -21,9 +21,11 @@ function App() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <div className="text-white font-bold text-sm hidden md:block">
+              <button className="px-4 py-1 text-white text-lg border-3 rounded-2xl font-bold">SIGN UP</button>
+              <button className="px-4 py-1 text-white text-lg border-3 rounded-2xl font-bold">LOGIN</button>
+          <div className="text-white text-sm hidden md:block">
             <div className="flex items-center text-lg font-bold gap-2">
-              <Clock size={16} />
+              {/* <Clock size={16} /> */}
               {currentDate.toLocaleTimeString('en-US', { 
                 hour: '2-digit',
                 minute: '2-digit'
@@ -37,8 +39,6 @@ function App() {
               })}
             </div>
           </div>
-          <button className="bg-white px-4 py-2 rounded font-semibold">SIGN UP</button>
-          <button className="bg-white px-4 py-2 rounded font-semibold">LOGIN</button>
           <button className="md:hidden">
             <Menu className="text-white" />
           </button>
