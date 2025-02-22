@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="min-h-screen bg-homepage">
       {/* Header */}
-      <header className="bg-[#4c9f5000] p-4 flex justify-between items-center border-b border-white/20">
+      <header className="bg-gray-600/20 p-4 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <img src="src/assets/ogLogo.png" alt="Impact Relief" className="h-20 w-20" />
           <nav className="hidden md:flex gap-6">
@@ -21,10 +21,10 @@ function App() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-              <button className="px-4 py-1 text-white text-lg border-3 rounded-2xl font-bold">SIGN UP</button>
-              <button className="px-4 py-1 text-white text-lg border-3 rounded-2xl font-bold">LOGIN</button>
-          <div className="text-white text-sm hidden md:block">
-            <div className="flex items-center text-lg font-bold gap-2">
+              <button className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold">SIGN UP</button>
+              <button className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold">LOGIN</button>
+          <div className="text-white text-lg font-semibold hidden md:block">
+            <div className="flex items-center font-bold gap-2">
               {/* <Clock size={16} /> */}
               {currentDate.toLocaleTimeString('en-US', { 
                 hour: '2-digit',
@@ -55,8 +55,8 @@ function App() {
         </div>
 
         {/* Join Section */}
-        <div className="mt-8">
-          <button className="bg-[#B15B5B] text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg hover:bg-[#9c4f4f] transition-colors">
+        <div className="mt-8 justify-center flex flex-col items-center px-2 py-1">
+          <button className="bg-[#B15B5B] text-white px-4 py-3 rounded-2xl md:text-md text-sm font-semibold shadow-lg hover:bg-[#9c4f4f] transition-colors">
             Join our Relief Program as a Volunteer and Make a Real Difference in the Lives of Those in Need!
           </button>
         </div>
