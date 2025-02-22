@@ -14,7 +14,6 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-homepage">
-      <Header />
       <MainContent />
       <ChatbotIcon onClick={toggleChatbox} />
       <Chatbox isOpen={isChatboxOpen} onClose={toggleChatbox} />

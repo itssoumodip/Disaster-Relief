@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import MainContent from './components/MainContent';
-import Chatbox from './components/Chatbox';
-import ChatbotIcon from './components/ChatbotIcon';
+import LoginPage from './components/LoginPage';
+import HomePage from './components/HomePage';
 import './App.css';
 
 function App() {
-  const [isChatboxOpen, setIsChatboxOpen] = useState(false);
-
-  const toggleChatbox = () => {
-    setIsChatboxOpen(!isChatboxOpen);
-  };
-
   return (
-    <div className="min-h-screen bg-homepage">
-      <Header />
-      <MainContent />
-      <ChatbotIcon onClick={toggleChatbox} />
-      <Chatbox isOpen={isChatboxOpen} onClose={toggleChatbox} />
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
