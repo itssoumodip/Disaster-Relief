@@ -27,7 +27,7 @@ const Chatbot = () => {
   return (
     <div className="chatbot">
       <button className="chatbot-button" onClick={toggleChat}>
-        <img src="/chatbot-icon.png" alt="Chatbot" />
+        Chat
       </button>
       {isOpen && (
         <div className="chatbot-window">

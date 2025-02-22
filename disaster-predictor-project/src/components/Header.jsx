@@ -28,7 +28,7 @@ export function Header() {
         <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
           <i className="fas mt-3 fa-bars w-6 h-6"></i>
         </button>
-        <i className="fas mt-3 fa-search w-2 h-6 hidden md:block"></i>
+        <img src="/src/assets/ogLogo.png" alt="Logo" className="w-20 h-20 hidden md:block" />
         <nav className="hidden md:flex items-center space-x-8">
           <Button variant="ghost" className="text-white text-xl font-bold hover:text-[#d9d9d9]">
             ROAD & MAPS
@@ -37,13 +37,10 @@ export function Header() {
             NEWS
           </Button>
           <Button variant="ghost" className="text-white text-xl font-bold hover:text-[#d9d9d9]">
-            VIDEOS
-          </Button>
-          <Button variant="ghost" className="text-white text-xl font-bold hover:text-[#d9d9d9]">
             WEATHER
           </Button>
           <Button variant="ghost" className="mr-5 text-white text-xl font-bold hover:text-[#d9d9d9]">
-            MORE
+            ABOUT US
           </Button>
         </nav>
       </div>
