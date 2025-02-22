@@ -1,15 +1,17 @@
-
+/* Reset margin and padding for all elements */
 * {
   box-sizing: border-box;
 }
 
+/* Ensure the body takes up the full height and width */
 body, html {
   height: 100%;
   width: 100%;
 }
 
+/* Apply background color to the body */
 body {
-  background-color: #000;
+  background-color: #000; /* or any other color you prefer */
 }
 
 .bg-homepage {
@@ -28,4 +30,93 @@ body {
   background-position: center;
   background-color: rgba(0, 0, 0, 0.858); 
   z-index: -1;
+}
+
+/* Additional styles for the login page */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.bg-gradient-to-b {
+  background: linear-gradient(to bottom, #2d3748, #1a202c);
+}
+
+.bg-gray-700 {
+  background-color: #4a5568;
+}
+
+.bg-gray-800 {
+  background-color: #2d3748;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-cyan-500 {
+  color: #00bcd4;
+}
+
+.bg-cyan-500 {
+  background-color: #00bcd4;
+}
+
+.bg-cyan-600 {
+  background-color: #00acc1;
+}
+
+.transition-colors {
+  transition: background-color 0.3s;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.w-full {
+  width: 100%;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.focus\:outline-none:focus {
+  outline: 0;
+}
+
+.focus\:border-cyan-500:focus {
+  border-color: #00bcd4;
 }

@@ -21,14 +21,14 @@ function MainContent() {
 
       {/* Emergency Status */}
       <div className="fixed bottom-6 right-6 flex items-center space-x-2"> 
-        <div className="w-12 h-12 rounded-full bg-[#b70000] animate-pulse flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full bg-[#ff0707]" />
-        </div>
-        <span className="text-white text-sm font-bold">
+      <span className="text-white text-sm font-bold text-right">
           EMERGENCY
           <br />
           SOS
         </span>
+        <div className="w-12 h-12 rounded-full bg-[#b70000] animate-pulse flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-[#ff0707]" />
+        </div>
       </div>
     </main>
   );
