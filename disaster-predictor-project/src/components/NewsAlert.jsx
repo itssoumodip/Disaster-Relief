@@ -12,7 +12,7 @@ const NewsAlert = ({
   details = defaultNews.details
 }) => {
   return (
-    <div className="bg-gray-400/10 p-6 rounded-lg">
+    <div className="bg-gray-400/40 p-6 rounded-lg">
       <h2 className="text-3xl font-bold text-white mb-2">{location}</h2>
       <h3 className="text-xl font-semibold text-white/90 mb-4">{headline}</h3>
       <p className="text-white/80 font-semibold leading-relaxed">{details}</p>
