@@ -7,9 +7,9 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-transparent p-1 flex justify-between items-center">
+    <header className="bg-transparent p-1 flex justify-between items-center fixed top-0 left-0 w-full z-50">
       <div className="flex items-center gap-4">
-        <img src="src/assets/logo.png" alt="Impact Relief" className="h-20 w-20" />
+        <img src="https://images.unsplash.com/vector-1740248627798-ba4a0e70534e?q=80&w=2360&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Impact Relief" className="h-20 w-20" />
         <nav className="hidden md:flex gap-6">
           <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/')}>HOME</a>
           <a href="#" className="text-white text-lg font-bold">ROAD & MAPS</a>
