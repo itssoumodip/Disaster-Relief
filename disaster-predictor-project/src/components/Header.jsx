@@ -13,7 +13,7 @@ function Header() {
         <nav className="hidden md:flex gap-6">
           <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/')}>HOME</a>
           <a href="#" className="text-white text-lg font-bold">ROAD & MAPS</a>
-          <a href="#" className="text-white text-lg font-bold">NEWS</a>
+          <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/news')}>NEWS</a>
           <a href="#" className="text-white text-lg font-bold">WEATHER</a>
           <a href="#" className="text-white text-lg font-bold">ABOUT US</a>
         </nav>

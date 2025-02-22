@@ -4,6 +4,7 @@ import Header from './components/Header';
 import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
 import CreateAccount from './components/CreateAccount';
+import NewsPage from './components/NewsPage';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create-account" element={<CreateAccount />} />
+            <Route path="/news" element={<NewsPage />} />
           </Routes>
         </div>
       </div>
