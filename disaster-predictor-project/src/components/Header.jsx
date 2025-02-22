@@ -7,7 +7,7 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-gray-600/20 p-1 flex justify-between items-center">
+    <header className="bg-transparent p-1 flex justify-between items-center">
       <div className="flex items-center gap-4">
         <img src="src/assets/logo.png" alt="Impact Relief" className="h-20 w-20" />
         <nav className="hidden md:flex gap-6">
@@ -18,15 +18,15 @@ function Header() {
           <a href="#" className="text-white text-lg font-bold">ABOUT US</a>
         </nav>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <button 
-          className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold"
+          className="px-4 py-1 sm:text-lg text-white text-sm font-bold"
           onClick={() => navigate('/create-account')}
         >
           SIGN UP
         </button>
         <button 
-          className="px-4 py-1 sm:text-lg text-white text-sm border-3 rounded-2xl font-bold"
+          className="px-4 py-1 sm:text-lg text-white text-sm font-bold"
           onClick={() => navigate('/login')}
         >
           LOGIN
