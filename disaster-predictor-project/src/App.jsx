@@ -8,6 +8,7 @@ import NewsPage from './components/NewsPage';
 import MainContent from './components/MainContent';
 import SosAlert from './components/SosAlert';
 import WeatherPage from './components/WeatherPage';
+import MapPage from './components/Maps/MapPage';
 import './App.css';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/main-content" element={<MainContent />} />
             <Route path="/sos-alert" element={<SosAlert />} />
             <Route path="/weather" element={<WeatherPage />} />
+            <Route path="/maps" element={<MapPage />} />
           </Routes>
         </div>
       </div>
