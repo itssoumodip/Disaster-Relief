@@ -21,7 +21,10 @@ function MainContent() {
 
       {/* Join Section */}
       <div className="mt-8 justify-center flex flex-col items-center px-2 py-1">
-        <button className="bg-[#B15B5B] text-white px-4 py-3 rounded-2xl md:text-md text-sm font-semibold shadow-lg hover:bg-[#9c4f4f] transition-colors">
+        <button 
+          onClick={() => navigate('/volunteer')}
+          className="bg-[#B15B5B] text-white px-4 py-3 rounded-2xl md:text-md text-sm font-semibold shadow-lg hover:bg-[#9c4f4f] transition-colors"
+        >
           Join our Relief Program as a Volunteer and Make a Real Difference in the Lives of Those in Need!
         </button>
       </div>
