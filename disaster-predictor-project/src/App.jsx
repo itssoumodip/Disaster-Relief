@@ -17,6 +17,7 @@ import ProfilePage from './components/Profile/ProfilePage';
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/utils/PrivateRoute';
+import AuthPage from './components/auth/AuthPage';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/maps" element={<MapPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/volunteer" element={<VolunteerPage />} />
+          <Route path="/auth" element={<AuthPage />} />
           <Route 
             path="/profile" 
             element={

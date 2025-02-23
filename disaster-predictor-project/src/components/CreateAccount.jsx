@@ -7,7 +7,7 @@ const CreateAccount = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [formData, setFormData] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -15,37 +15,78 @@ const CreateAccount = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const validateForm = () => {
+    if (!formData.username || !formData.email || !formData.password || !formData.confirmPassword) {
+      setError('All fields are required');
+      return false;
+    }
+
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return false;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      return false;
+    }
+
+    if (!formData.email.includes('@')) {
+      setError('Please enter a valid email address');
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+    if (!validateForm()) {
       return;
     }
 
     setLoading(true);
 
     try {
-      // Replace this with your actual API call
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        login(data.user);
-        navigate('/profile');
-      } else {
-        setError(data.message || 'Registration failed');
+      // Using localStorage to simulate backend storage
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+      
+      // Check if email already exists
+      if (existingUsers.some(user => user.email === formData.email)) {
+        setError('Email already registered');
+        setLoading(false);
+        return;
       }
+
+      // Create new user
+      const newUser = {
+        id: Date.now(),
+        username: formData.username,
+        email: formData.email,
+        password: formData.password // In a real app, never store plain text passwords
+      };
+
+      // Save user
+      existingUsers.push(newUser);
+      localStorage.setItem('users', JSON.stringify(existingUsers));
+
+      // Login the user
+      const userData = {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email
+      };
+
+      login(userData);
+      localStorage.setItem('currentUser', JSON.stringify(userData));
+
+      // Redirect to profile
+      navigate('/profile');
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      setError('An error occurred during registration');
+      console.error('Registration error:', err);
     } finally {
       setLoading(false);
     }
