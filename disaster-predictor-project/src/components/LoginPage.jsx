@@ -1,17 +1,46 @@
 import React, { useState } from 'react';
 import { UserCircle, Lock, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    email: '',
+    password: ''
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Login attempted with:', formData);
+    setError('');
+    setLoading(true);
+
+    try {
+      // Replace this with your actual API call
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        login(data.user);
+        navigate('/profile');
+      } else {
+        setError(data.message || 'Login failed');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,10 +70,10 @@ const LoginPage = () => {
               <UserCircle className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               <input
                 type="text"
-                placeholder="Enter your username"
+                placeholder="Enter your email"
                 className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-300"
-                value={formData.username}
-                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
 
@@ -59,11 +88,14 @@ const LoginPage = () => {
               />
             </div>
 
+            {error && <p className="text-red-500 text-center">{error}</p>}
+
             <button
               type="submit"
               className="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 group shadow-md hover:shadow-lg"
+              disabled={loading}
             >
-              Login
+              {loading ? 'Logging in...' : 'Login'}
               <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
             </button>
           </form>
