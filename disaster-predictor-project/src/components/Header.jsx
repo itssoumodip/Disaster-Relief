@@ -14,7 +14,7 @@ function Header() {
           <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/')}>HOME</a>
           <a href="#" className="text-white text-lg font-bold">ROAD & MAPS</a>
           <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/news')}>NEWS</a>
-          <a href="#" className="text-white text-lg font-bold">WEATHER</a>
+          <a href="#" className="text-white text-lg font-bold" onClick={() => navigate('/weather')}>WEATHER</a>
           <a href="#" className="text-white text-lg font-bold">ABOUT US</a>
         </nav>
       </div>

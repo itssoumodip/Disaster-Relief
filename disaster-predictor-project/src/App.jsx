@@ -7,12 +7,13 @@ import CreateAccount from './components/CreateAccount';
 import NewsPage from './components/NewsPage';
 import MainContent from './components/MainContent';
 import SosAlert from './components/SosAlert';
+import WeatherPage from './components/WeatherPage';
 import './App.css';
 
 const App = () => {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 to-gray-800">
         <Header />
         <div className="flex-grow">
           <Routes>
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/news" element={<NewsPage />} />
             <Route path="/main-content" element={<MainContent />} />
             <Route path="/sos-alert" element={<SosAlert />} />
+            <Route path="/weather" element={<WeatherPage />} />
           </Routes>
         </div>
       </div>
