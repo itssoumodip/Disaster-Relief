@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Alert</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #1100ff, #654dff, #5100ff);
+            color: white;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px black;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+            50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(255, 0, 0, 1); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .sos-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 30px 60px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            animation: pulse 1.5s infinite;
+            outline: none;
+        }
+
+        .sos-button:active {
+            background-color: darkred;
+            animation: none;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Emergency SOS Alert</h1>
+    <button class="sos-button" id="sosButton">SOS</button>
+    <p class="message" id="statusMessage"></p>
+
+    <script>
+        document.getElementById('sosButton').addEventListener('click', async () => {
+            const phoneNumber = "+917980734036";  // Replace with the recipient's number
+            const message = "🚨 SOS Alert! User needs help immediately. 🚨";
+
+            document.getElementById("statusMessage").innerText = "Sending SOS...";
+
+            try {
+                const response = await fetch('http://localhost:3000/send-sos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ to: phoneNumber, message })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    document.getElementById("statusMessage").innerText = "🚀 SOS Sent Successfully!";
+                } else {
+                    document.getElementById("statusMessage").innerText = "⚠️ Error: " + result.error;
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("statusMessage").innerText = "❌ Failed to send SOS.";
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -5,24 +5,24 @@ import { Linkedin, Twitter } from 'lucide-react';
 const TeamSection = () => {
   const team = [
     {
+      name: 'Santanu Debnath',
+      role: 'Founder & CEO',
+      image: 'https://images.unsplash.com/photo-1740292988695-cee90193c45f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
       name: 'Soumodip Das',
-      role: 'Emergency Response Director',
-      image: '../../src/assets/p1.jpg',
+      role: 'Co-Founder & CTO',
+      image: 'https://images.unsplash.com/photo-1740293001418-b91f3102d69e?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       name: 'Pradip Garai',
-      role: 'Community Outreach Lead',
-      image: '../../src/assets/p2.jpg',
-    },
-    {
-      name: 'Santonu Debnath',
-      role: 'Volunteer Coordinator',
-      image: '../../src/assets/p2.jpg',
+      role: 'Director of Operations',
+      image: 'https://images.unsplash.com/photo-1740293340201-0bda67641d74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       name: 'Pallabi Mondal',
-      role: 'Volunteer Coordinator',
-      image: '../../src/assets/p4.jpg',
+      role: 'Head of Oparations',
+      image: 'https://images.unsplash.com/photo-1740293340199-8d1864937378?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8fA%3D%3D',
     }
   ];
 

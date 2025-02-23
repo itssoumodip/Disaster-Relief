@@ -18,6 +18,7 @@ import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/utils/PrivateRoute';
 import AuthPage from './components/auth/AuthPage';
+import VolunteerForm from './components/Volunteer/VolunteerForm';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               </PrivateRoute>
             } 
           />
+          <Route path="/volunteer/register" element={<VolunteerForm />} />
         </Routes>
       </Router>
     </AuthProvider>
