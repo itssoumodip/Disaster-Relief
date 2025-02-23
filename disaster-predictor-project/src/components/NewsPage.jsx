@@ -70,7 +70,7 @@ function NewsPage() {
   }
 
   return (
-    <div className="min-h-screen font-semibold bg-gradient-to-br from-blue-900 to-blue-950 ">
+    <div className="min-h-screen font-semibold bg-gradient-to-br from-gray-900 to-gray-800">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">Latest News</h2>

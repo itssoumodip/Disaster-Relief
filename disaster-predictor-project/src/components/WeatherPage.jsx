@@ -40,7 +40,7 @@ const WeatherPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br  from-blue-900 to-blue-950 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-8 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
         <h1 className="text-5xl font-extrabold text-center mb-12 text-white tracking-tight">

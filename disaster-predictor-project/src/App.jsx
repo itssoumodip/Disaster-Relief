@@ -13,7 +13,7 @@ import './App.css';
 const App = () => {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 to-gray-800">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 to-gray-800 pt-20">
         <Header />
         <div className="flex-grow">
           <Routes>
