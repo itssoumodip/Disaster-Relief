@@ -6,7 +6,7 @@ import OpportunitiesGrid from './OpportunitiesGrid';
 
 const VolunteerPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900/200 pt-20">
       {/* Hero Section */}
       <motion.section 
         initial={{ opacity: 0 }}
