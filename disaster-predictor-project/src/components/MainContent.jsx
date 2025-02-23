@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { AlertCircle } from 'lucide-react';
 import NewsAlert from './NewsAlert';
 import NewsCarousel from './NewsCarousel';
+import sosService from '../services/sosService';
 
 const MainContent = () => {
   const navigate = useNavigate();
+  const [sending, setSending] = useState(false);
+  const [sosStatus, setSosStatus] = useState(null);
 
-  const handleSosClick = () => {
-    navigate('/sos-alert');
+  const handleSosClick = async () => {
+    try {
+      setSending(true);
+      setSosStatus('sending');
+      await sosService.sendSOS();
+      setSosStatus('success');
+      // Optional: Navigate to SOS page after successful send
+      // navigate('/sos-alert');
+    } catch (error) {
+      setSosStatus('error');
+      console.error('Failed to send SOS:', error);
+    } finally {
+      setSending(false);
+      // Reset status after 3 seconds
+      setTimeout(() => setSosStatus(null), 3000);
+    }
   };
 
   return (
@@ -63,16 +81,43 @@ const MainContent = () => {
           </button>
         </div>
 
-        {/* Emergency Status */}
-        <div className="fixed bottom-6 right-6 flex items-center space-x-2" onClick={handleSosClick}> 
-          <span className="text-white text-sm font-bold text-right">
-            EMERGENCY
-            <br />
-            SOS
-          </span>
-          <div className="w-12 h-12 rounded-full bg-[#b70000] animate-pulse flex items-center justify-center">
-            <div className="w-8 h-8 rounded-full bg-[#ff0707]" />
-          </div>
+        {/* Emergency Status Button with Feedback */}
+        <div className="fixed bottom-6 right-6 flex flex-col items-end space-y-2">
+          <AnimatePresence>
+            {sosStatus && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className={`text-sm font-bold px-4 py-2 rounded-lg ${
+                  sosStatus === 'sending' ? 'bg-yellow-500' :
+                  sosStatus === 'success' ? 'bg-green-500' :
+                  'bg-red-500'
+                } text-white shadow-lg`}
+              >
+                {sosStatus === 'sending' ? 'Sending SOS...' :
+                 sosStatus === 'success' ? 'SOS Sent Successfully!' :
+                 'Failed to send SOS'}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <button
+            onClick={handleSosClick}
+            disabled={sending}
+            className="group flex items-center space-x-2 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-black/40 transition-all duration-300"
+          >
+            <span className="text-white text-sm font-bold text-right">
+              EMERGENCY
+              <br />
+              SOS
+            </span>
+            <div className={`w-12 h-12 rounded-full bg-[#b70000] ${sending ? 'animate-ping' : 'animate-pulse'} flex items-center justify-center`}>
+              <div className="w-8 h-8 rounded-full bg-[#ff0707] flex items-center justify-center">
+                <AlertCircle className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          </button>
         </div>
       </main>
     </motion.section>
