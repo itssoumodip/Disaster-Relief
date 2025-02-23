@@ -11,30 +11,30 @@ import WeatherPage from './components/WeatherPage';
 import MapPage from './components/Maps/MapPage';
 import AboutPage from './components/AboutUs/AboutPage';
 import VolunteerPage from './components/Volunteer/VolunteerPage';
+import ScrollToTop from './components/utils/ScrollToTop';
+import NewsDetail from './components/NewsDetail';
 import './App.css';
 
-const App = () => {
+function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 to-gray-800 pt-20">
-        <Header />
-        <div className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/create-account" element={<CreateAccount />} />
-            <Route path="/news" element={<NewsPage />} />
-            <Route path="/main-content" element={<MainContent />} />
-            <Route path="/sos-alert" element={<SosAlert />} />
-            <Route path="/weather" element={<WeatherPage />} />
-            <Route path="/maps" element={<MapPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/volunteer" element={<VolunteerPage />} />
-          </Routes>
-        </div>
-      </div>
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/latest" element={<NewsDetail />} />
+        <Route path="/main-content" element={<MainContent />} />
+        <Route path="/sos-alert" element={<SosAlert />} />
+        <Route path="/weather" element={<WeatherPage />} />
+        <Route path="/maps" element={<MapPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/volunteer" element={<VolunteerPage />} />
+      </Routes>
     </Router>
   );
-};
+}
 
 export default App;

@@ -1,22 +1,20 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
-const defaultNews = {
-  location: "DELHI, INDIA",
-  headline: "A SIGNIFICANT EARTHQUAKE",
-  details: "MEASURING [MAGNITUDE] ON THE RICHTER SCALE HAS STRUCK NEAR THE PACIFIC COAST EARLIER THIS 12:49, FEB 1. THE EPICENTER IS LOCATED APPROXIMATELY 1KM FROM JANAMAZ JID. INITIAL REPORTS INDICATE [LEVEL OF DAMAGE - E.G., SHAKING FELT STRONGLY, SOME STRUCTURAL DAMAGE, WIDESPREAD POWER OUTAGES]. RESIDENTS ARE BEING URGED TO TAKE NECESSARY SAFETY PRECAUTIONS, INCLUDING STAYING AWAY FROM UNSTABLE STRUCTURES AND PREPARING FOR POTENTIAL AFTERSHOCKS. EMERGENCY SERVICES ARE RESPONDING TO THE AFFECTED AREAS."
-};
-
-const NewsAlert = ({ 
-  location = defaultNews.location,
-  headline = defaultNews.headline,
-  details = defaultNews.details
-}) => {
+const NewsAlert = ({ location, headline, details }) => {
   return (
-    <div className="bg-gray-400/40 p-6 rounded-lg">
-      <h2 className="text-3xl font-bold text-white mb-2">{location}</h2>
-      <h3 className="text-xl font-semibold text-white/90 mb-4">{headline}</h3>
-      <p className="text-white/80 font-semibold leading-relaxed">{details}</p>
-    </div>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-6 rounded-xl backdrop-blur-sm border border-white/10"
+    >
+      {location && <h2 className="text-2xl font-bold text-white mb-2">{location}</h2>}
+      {headline && <h3 className="text-xl font-semibold text-white/90 mb-4">{headline}</h3>}
+      {details && <p className="text-white/80 leading-relaxed">{details}</p>}
+      {!location && !headline && !details && (
+        <p className="text-gray-400 text-center py-8">No alerts at this time</p>
+      )}
+    </motion.div>
   );
 };
 

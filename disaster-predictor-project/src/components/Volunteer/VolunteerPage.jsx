@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RegistrationForm, ImpactSection, OpportunitiesGrid } from './';
+import RegistrationForm from './RegistrationForm';
+import ImpactSection from './ImpactSection';
+import OpportunitiesGrid from './OpportunitiesGrid';
 
 const VolunteerPage = () => {
   return (

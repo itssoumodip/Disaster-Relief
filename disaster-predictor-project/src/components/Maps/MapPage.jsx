@@ -1,33 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { ArrowRight } from 'lucide-react';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import SearchBar from './SearchBar';
 import DisasterList from './DisasterList';
 import SafePlaceInfo from './SafePlaceInfo';
-import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import 'leaflet/dist/leaflet.css';
 
-// Fix Leaflet icon issue
-const DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconRetinaUrl: iconRetina,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+// Fix Leaflet default icon issue
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow
 });
 
-L.Marker.prototype.options.icon = DefaultIcon;
-
-// Map recenter component
-function RecenterAutomatically({ lat, lng }) {
+// RecenterMap component
+function RecenterMap({ lat, lng }) {
   const map = useMap();
+  
   useEffect(() => {
-    map.setView([lat, lng], 7);
+    if (map) {
+      map.setView([lat, lng], 7);
+    }
   }, [lat, lng, map]);
+  
   return null;
 }
 
@@ -45,97 +46,45 @@ const MapPage = () => {
       const data = await response.json();
 
       if (data.length === 0) {
-        alert("Location not found!");
+        alert('Location not found');
         return;
       }
 
-      const newLocation = {
-        lat: parseFloat(data[0].lat),
-        lng: parseFloat(data[0].lon)
-      };
-
-      setLocation(newLocation);
-      fetchDisasterData(newLocation.lat, newLocation.lng);
-      findSafePlace(newLocation.lat, newLocation.lng);
+      const { lat, lon: lng } = data[0];
+      setLocation({ lat: parseFloat(lat), lng: parseFloat(lng) });
     } catch (error) {
-      console.error("Error fetching location:", error);
-      alert("Error searching location. Please try again.");
+      console.error('Search error:', error);
+      alert('Error searching location');
     }
-  };
-
-  const fetchDisasterData = async (lat, lng) => {
-    try {
-      const startDate = `${new Date().getFullYear() - 3}-01-01`;
-      const response = await fetch(
-        `https://eonet.gsfc.nasa.gov/api/v3/events?status=closed&limit=50&start=${startDate}`
-      );
-      const data = await response.json();
-
-      const nearbyDisasters = data.events.filter(event => {
-        const eventLat = event.geometry[0].coordinates[1];
-        const eventLng = event.geometry[0].coordinates[0];
-        return getDistance(lat, lng, eventLat, eventLng) < 500;
-      });
-
-      setDisasters(nearbyDisasters);
-      setMarkers(nearbyDisasters.map(event => ({
-        position: [event.geometry[0].coordinates[1], event.geometry[0].coordinates[0]],
-        title: event.title
-      })));
-    } catch (error) {
-      console.error("Error fetching disaster data:", error);
-    }
-  };
-
-  const findSafePlace = (lat, lng) => {
-    const safePlaces = [
-      { name: "Delhi", lat: 28.7041, lng: 77.1025 },
-      { name: "Chennai", lat: 13.0827, lng: 80.2707 },
-      { name: "Kolkata", lat: 22.5726, lng: 88.3639 },
-      { name: "Mumbai", lat: 19.0760, lng: 72.8777 },
-      { name: "Bangalore", lat: 12.9716, lng: 77.5946 }
-    ];
-
-    const nearest = safePlaces.reduce((closest, place) => {
-      const distance = getDistance(lat, lng, place.lat, place.lng);
-      return distance < (closest?.distance || Infinity) 
-        ? { ...place, distance } 
-        : closest;
-    }, null);
-
-    setSafePlace(nearest);
-  };
-
-  const getDistance = (lat1, lon1, lat2, lon2) => {
-    const R = 6371;
-    const dLat = (lat2 - lat1) * (Math.PI / 180);
-    const dLon = (lon2 - lon1) * (Math.PI / 180);
-    const a = 
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-      Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-white text-center mb-8">
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-white text-center mb-8"
+        >
           Disaster & Safe Shelter Finder
-        </h1>
+        </motion.h1>
         
         <SearchBar onSearch={handleSearch} />
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-[600px]">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden h-[600px]"
+            >
               <MapContainer
                 center={[location.lat, location.lng]}
                 zoom={5}
                 className="h-full w-full"
               >
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <RecenterAutomatically lat={location.lat} lng={location.lng} />
+                <RecenterMap lat={location.lat} lng={location.lng} />
                 {markers.map((marker, index) => (
                   <Marker key={index} position={marker.position}>
                     <Popup>{marker.title}</Popup>
@@ -154,13 +103,27 @@ const MapPage = () => {
                   </Marker>
                 )}
               </MapContainer>
-            </div>
+            </motion.div>
           </div>
           
-          <div className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
             <DisasterList disasters={disasters} />
             <SafePlaceInfo safePlace={safePlace} />
-          </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold 
+                py-3 px-6 rounded-lg flex items-center justify-center gap-2"
+            >
+              Join Now
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </div>
