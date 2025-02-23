@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import NewsAlert from './NewsAlert';
 import NewsCarousel from './NewsCarousel';
 
 function MainContent() {
+  const navigate = useNavigate();
+
+  const handleSosClick = () => {
+    navigate('/sos-alert');
+  };
+
   return (
     <main className="p-4 md:p-8">
       <h1 className="text-white text-6xl md:text-8xl font-bold mb-8">BREAKING NEWS</h1>
@@ -20,8 +27,8 @@ function MainContent() {
       </div>
 
       {/* Emergency Status */}
-      <div className="fixed bottom-6 right-6 flex items-center space-x-2"> 
-      <span className="text-white text-sm font-bold text-right">
+      <div className="fixed bottom-6 right-6 flex items-center space-x-2" onClick={handleSosClick}> 
+        <span className="text-white text-sm font-bold text-right">
           EMERGENCY
           <br />
           SOS

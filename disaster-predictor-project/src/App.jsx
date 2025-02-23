@@ -5,6 +5,8 @@ import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
 import CreateAccount from './components/CreateAccount';
 import NewsPage from './components/NewsPage';
+import MainContent from './components/MainContent';
+import SosAlert from './components/SosAlert';
 import './App.css';
 
 const App = () => {
@@ -18,6 +20,8 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/create-account" element={<CreateAccount />} />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/main-content" element={<MainContent />} />
+            <Route path="/sos-alert" element={<SosAlert />} />
           </Routes>
         </div>
       </div>
